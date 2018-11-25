@@ -1,0 +1,35 @@
+{
+    "NAME"     : "Parking Brake",
+    "URL"      : "https://raw.githubusercontent.com/jarosm/KSP-ParkingBrake/master/GameData/ParkingBrake/ParkingBrake.version",
+    "DOWNLOAD" : "https://github.com/jarosm/KSP-ParkingBrake/releases",
+    "GITHUB" :
+    {
+        "USERNAME" : "jarosm",
+        "REPOSITORY" : "KSP-ParkingBrake"
+    },
+    "VERSION" :
+    {
+        "MAJOR" : 0,
+        "MINOR" : 1,
+        "PATCH" : 0,
+        "BUILD" : 0
+    },
+    "KSP_VERSION" :
+    {
+        "MAJOR" : 1,
+        "MINOR" : 5,
+        "PATCH" : 1
+    },
+    "KSP_VERSION_MIN" :
+    {
+        "MAJOR" : 1,
+        "MINOR" : 5,
+        "PATCH" : 1
+    },
+    "KSP_VERSION_MAX" :
+    {
+        "MAJOR" : 1,
+        "MINOR" : 5,
+        "PATCH" : 1
+    }
+}

@@ -1,2 +1,2 @@
 # KSP-ParkingBrake
-KSp mod for stopping slinding of vessel on a slope.
+KSP mod for stopping sliding of vessel on a slope.
