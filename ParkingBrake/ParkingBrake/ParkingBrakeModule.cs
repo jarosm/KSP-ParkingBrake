@@ -54,7 +54,7 @@ namespace ParkingBrake
                     return;
                 }
 
-                if (vessel.speed > 0.1)
+                if (vessel.speed > 0.25)
                 {
                     brakeActive = false;
                     ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Moving")).color = Color.red;
