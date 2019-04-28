@@ -32,7 +32,7 @@ namespace ParkingBrake
             if (HighLogic.LoadedSceneIsFlight)
             {
                 SynchronizeParkingBrakeModules();
-                ParkingBrake.onParkingBrake.Fire(this);
+                ParkingBrake.onParkingBrake.Fire(this, false);
             }
         }
 
@@ -69,7 +69,7 @@ namespace ParkingBrake
                 ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Disengaged"));
             }
 
-            ParkingBrake.onParkingBrake.Fire(this);
+            ParkingBrake.onParkingBrake.Fire(this, true);
             SynchronizeParkingBrakeModules();
         }
 

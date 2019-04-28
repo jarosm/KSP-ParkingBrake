@@ -4,7 +4,17 @@ namespace ParkingBrake
 {
     public class ParkingBrake : VesselModule
     {
-        public static EventData<ParkingBrakeModule> onParkingBrake = new EventData<ParkingBrakeModule>("onParkingBrake");
+        [KSPField(isPersistant = true)]
+        private double lat = 0;
+        [KSPField(isPersistant = true)]
+        private double lon = 0;
+        [KSPField(isPersistant = true)]
+        private double alt = 0;
+        [KSPField(isPersistant = true)]
+        private bool positionSet = false;
+
+
+        public static EventData<ParkingBrakeModule, bool> onParkingBrake = new EventData<ParkingBrakeModule, bool>("onParkingBrake");
         private bool currentBrakeState; // Current state of the brake
 
 
@@ -31,13 +41,21 @@ namespace ParkingBrake
         /// </summary>
         /// <param name="v"></param>
         /// <param name="brakeState"></param>
-        private void EngageParkingBrake(ParkingBrakeModule m)
+        private void EngageParkingBrake(ParkingBrakeModule m, bool setPosition)
         {
             if (m.vessel != vessel)
                 return;
 
             if (m.BrakeActive == currentBrakeState)
                 return;
+
+            if (setPosition)
+            {
+                lat = vessel.latitude;
+                lon = vessel.longitude;
+                alt = vessel.altitude;
+                positionSet = true;
+            }
 
             currentBrakeState = m.BrakeActive;
         }
@@ -69,6 +87,13 @@ namespace ParkingBrake
                     r.angularVelocity *= 0;
                     r.velocity *= 0;
                 }
+            }
+
+            if (positionSet)
+            {
+                vessel.altitude = alt;
+                vessel.latitude = lat;
+                vessel.longitude = lon;
             }
         }
 
