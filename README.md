@@ -2,6 +2,9 @@
 KSP mod for stopping sliding of a vessel on a slope.
 
 # Changelog
+## Version 0.1.2
+- Recompile for KSP 1.7.1
+
 ## Version 0.1.1
 - Recompile for KSP 1.7
 
