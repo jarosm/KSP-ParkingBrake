@@ -2,6 +2,11 @@
 KSP mod for stopping sliding of a vessel on a slope.
 
 # Changelog
+## Version 0.4.2
+- Parking brake is disengaged when vessel starts to fly
+- Parking brake is disengaged when you switch off brakes
+- Parking brake added to external command seat
+
 ## Version 0.4.1
 - Russian localization by kovakthemost
 

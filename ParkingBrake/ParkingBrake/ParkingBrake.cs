@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using KSP.Localization;
 
 namespace ParkingBrake
 {
@@ -56,8 +56,26 @@ namespace ParkingBrake
                 alt = vessel.altitude;
                 positionSet = true;
             }
+            else
+                positionSet = false;
 
             currentBrakeState = m.BrakeActive;
+        }
+
+
+        /// <summary>
+        /// Disengage parking brake by controller
+        /// </summary>
+        private void DisengageParkingBrake()
+		{
+            currentBrakeState = false;
+
+            var modules = vessel.FindPartModulesImplementing<ParkingBrakeModule>();
+            var count = modules.Count;
+            for (int i = 0; i < count; ++i)
+                modules[i].BrakeActive = false;
+
+            ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Disengaged"));
         }
 
 
@@ -70,12 +88,23 @@ namespace ParkingBrake
             if (!HighLogic.LoadedSceneIsFlight)
                 return;
 
+            if (!vessel.Landed)
+            {
+                if (currentBrakeState) // Brake active, disengage
+                    DisengageParkingBrake();
+                return;
+            }
+
             if (!currentBrakeState)
                 return;
 
-            if (!vessel.Landed)
+            // Brakes switched off
+            if (!vessel.ActionGroups[KSPActionGroup.Brakes])
+			{
+                DisengageParkingBrake();
                 return;
-            
+            }
+
             vessel.permanentGroundContact = true;
 
             var c = vessel.parts.Count;
