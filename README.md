@@ -2,6 +2,9 @@
 KSP mod for stopping sliding of a vessel on a slope.
 
 # Changelog
+## Version 0.4.4
+- Recompile for KSP 1.12.1
+
 ## Version 0.4.3
 - Brazilian Portuguese localization by Lisias
 
